@@ -1,5 +1,6 @@
+#include <iostream>
+
 int solution(int N) {
-    // write your code in C++14 (g++ 6.2.0)
     int gapSize = 0;
     int reminder = 0;
     int bufor;
@@ -24,4 +25,13 @@ int solution(int N) {
         }
     }
     return gapSize;
+}
+
+
+int main()
+{
+    int N = 9;
+    std::cout << solution(N) << std::endl;
+
+    return 0;
 }
