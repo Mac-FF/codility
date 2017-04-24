@@ -11,27 +11,24 @@ long long sumRight(std::vector<int> & A, size_t index)
     return rightSum;
 }
 
-long long sumLeft(std::vector<int> & A, size_t index)
-{
-    long long leftSum = 0;
-    for(size_t i = index; i > 0; i--)
-    {
-        leftSum += A[i - 1];
-    }
-    return leftSum;
-}
-
 int solution(std::vector<int> &A) {
     if (A.empty())
         return -1;
 
+    long long  sumR = 0;
+    long long  sumL = 0;
     for (size_t index = 0; index < A.size(); index++)
     {
+        if(!index)
+        {
+            sumR = sumRight(A, 0);
+            sumL = 0;
+        }else
+        {
+            sumR -= A[index];
+            sumL += A[index - 1];
+        }
 
-        long long  sumR = sumRight(A, index);
-        long long  sumL = sumLeft(A, index);
-        std::cout << "P indeks : " << index << " suma: "<< sumR << std::endl;
-        std::cout << "L indeks : " << index << " suma: "<< sumL << std::endl << std::endl;
         if (sumR == sumL)
         {
             return index;
